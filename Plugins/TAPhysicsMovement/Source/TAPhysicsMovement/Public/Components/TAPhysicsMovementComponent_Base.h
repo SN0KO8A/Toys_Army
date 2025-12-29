@@ -32,6 +32,15 @@ public:
 	FBodyInstance* GetBodyInstance() const;
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
+	FVector GetVelocity() { return CurrentVelocity; }
+
+	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
+	FVector GetAngularVelocityInRadians() { return CurrentAngularVelocityInRadians; }
+
+	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
+	FVector GetAngularVelocityInDegrees() { return FMath::RadiansToDegrees(CurrentAngularVelocityInRadians); }
+
+	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
 	void AddForce(const FVector& Force, bool bIsAccelerationChange = false);
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
@@ -84,6 +93,10 @@ private:
 	FBodyInstance* BodyInstance = nullptr;
 
 	FTADeferredForcesLoader DeferredForcesLoader;
+
+	FVector CurrentVelocity;
+
+	FVector CurrentAngularVelocityInRadians;
 
 	bool bIsUsingNetworkPhysicsPrediction = false;
 };

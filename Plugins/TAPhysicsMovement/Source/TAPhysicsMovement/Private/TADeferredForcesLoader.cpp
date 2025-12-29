@@ -66,7 +66,7 @@ void FTADeferredForcesLoader::AddForce(Chaos::FRigidBodyHandle_Internal* RigidBo
 {
 	if (ensure(RigidBodyHandle))
 	{
-		if (ForceData.bIsAccelerationChange)
+		if (ForceData.bIncludeMass)
 		{
 			const Chaos::FVec3 force = ForceData.Force * RigidBodyHandle->M();
 			RigidBodyHandle->AddForce(force, true);
@@ -93,7 +93,7 @@ void FTADeferredForcesLoader::AddTorque(Chaos::FRigidBodyHandle_Internal* RigidB
 {
 	if (ensure(RigidBodyHandle))
 	{
-		if (TorqueData.bIsAccelerationChange)
+		if (TorqueData.bIncludeWorldInertia)
 		{
 			Chaos::FVec3 torque = Chaos::FParticleUtilitiesXR::GetWorldInertia(RigidBodyHandle) * TorqueData.Torque;
 			RigidBodyHandle->AddTorque(torque, true);
@@ -109,7 +109,7 @@ void FTADeferredForcesLoader::AddImpulse(Chaos::FRigidBodyHandle_Internal* Rigid
 {
 	if (ensure(RigidBodyHandle))
 	{
-		if (ImpulseData.bIsVelocityChange)
+		if (ImpulseData.bIncludeMass)
 		{
 			Chaos::FVec3 impulse = ImpulseData.Impulse * RigidBodyHandle->M();
 			RigidBodyHandle->SetLinearImpulse(RigidBodyHandle->LinearImpulse() + impulse, true);

@@ -116,16 +116,15 @@ void UTAPhysicsMovementComponent_Base::AsyncPhysicsTickComponent(float DeltaTime
 		return;
 	}
 
+	CurrentVelocity = RigidBodyHandle->GetV();
+	CurrentAngularVelocityInRadians = RigidBodyHandle->GetW();
+
 	if (UWorld* World = GetWorld())
 	{
 		SimulatePhysicsTick(DeltaTime, RigidBodyHandle);
 		DeferredForcesLoader.Apply(RigidBodyHandle);
 	}
 }
-
-//void UTAPhysicsMovementComponent_Base::SimulatePhysicsTick(double DeltaTime, Chaos::FRigidBodyHandle_Internal* InRigidBodyHandle)
-//{
-//}
 
 FBodyInstance* UTAPhysicsMovementComponent_Base::GetBodyInstance() const
 {

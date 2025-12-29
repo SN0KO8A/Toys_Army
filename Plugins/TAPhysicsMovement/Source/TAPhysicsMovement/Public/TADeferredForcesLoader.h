@@ -13,15 +13,15 @@ struct TAPHYSICSMOVEMENT_API FTAForceData
 {
 
 public:
-	FTAForceData(const FVector& ForceInput, bool IsAccelerationChange) 
+	FTAForceData(const FVector& ForceInput, bool IncludeMass)
 	{
 		Force = ForceInput;
-		bIsAccelerationChange = IsAccelerationChange;
+		bIncludeMass = IncludeMass;
 	}
 	~FTAForceData() {}
 
 	FVector Force;
-	bool bIsAccelerationChange = false;
+	bool bIncludeMass = false;
 };
 
 struct TAPHYSICSMOVEMENT_API FTAForceAtPositionData
@@ -44,30 +44,30 @@ struct TAPHYSICSMOVEMENT_API FTATorqueData
 {
 
 public:
-	FTATorqueData(const FVector& TorqueInput, bool IsAccelerationChange)
+	FTATorqueData(const FVector& TorqueInput, bool IncludeWorldInertia)
 	{
 		Torque = TorqueInput;
-		bIsAccelerationChange = IsAccelerationChange;
+		bIncludeWorldInertia = IncludeWorldInertia;
 	}
 	~FTATorqueData() {}
 
 	FVector Torque;
-	bool bIsAccelerationChange = false;
+	bool bIncludeWorldInertia = false;
 };
 
 struct TAPHYSICSMOVEMENT_API FTAImpulseData
 {
 
 public:
-	FTAImpulseData(const FVector& ImpulseInput, bool IsImpulseChange)
+	FTAImpulseData(const FVector& ImpulseInput, bool IncludeMass)
 	{
 		Impulse = ImpulseInput;
-		bIsVelocityChange = IsImpulseChange;
+		bIncludeMass = IncludeMass;
 	}
 	~FTAImpulseData() {}
 
 	FVector Impulse;
-	bool bIsVelocityChange = false;
+	bool bIncludeMass = false;
 };
 
 struct TAPHYSICSMOVEMENT_API FTAImpulseAtPositionData
