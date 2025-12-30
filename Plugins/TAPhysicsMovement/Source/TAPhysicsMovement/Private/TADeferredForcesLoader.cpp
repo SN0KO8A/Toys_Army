@@ -93,7 +93,7 @@ void FTADeferredForcesLoader::AddTorque(Chaos::FRigidBodyHandle_Internal* RigidB
 {
 	if (ensure(RigidBodyHandle))
 	{
-		if (TorqueData.bIncludeWorldInertia)
+		if (TorqueData.bIncludeObjectWorldInertia)
 		{
 			Chaos::FVec3 torque = Chaos::FParticleUtilitiesXR::GetWorldInertia(RigidBodyHandle) * TorqueData.Torque;
 			RigidBodyHandle->AddTorque(torque, true);

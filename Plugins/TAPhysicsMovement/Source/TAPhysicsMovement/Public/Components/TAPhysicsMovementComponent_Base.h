@@ -41,16 +41,16 @@ public:
 	FVector GetAngularVelocityInDegrees() { return FMath::RadiansToDegrees(CurrentAngularVelocityInRadians); }
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
-	void AddForce(const FVector& Force, bool bIsAccelerationChange = false);
+	void AddForce(const FVector& Force, bool bIsMassIncluded = false);
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
 	void AddForceAtPosition(const FVector& Force, const FVector& Position);
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
-	void AddTorque(const FVector& Torque, bool bIsAccelerationChange = false);
+	void AddTorque(const FVector& Torque, bool bIncludeObjectWorldInertia = false);
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
-	void AddImpulse(const FVector& Impulse, bool bIsVelocityChange = false);
+	void AddImpulse(const FVector& Impulse, bool bIsMassIncluded = false);
 
 	UFUNCTION(BlueprintCallable, Category = "TAPhysicsMovement")
 	void AddImpulseAtPosition(const FVector& Impulse, const FVector& Position);

@@ -44,15 +44,15 @@ struct TAPHYSICSMOVEMENT_API FTATorqueData
 {
 
 public:
-	FTATorqueData(const FVector& TorqueInput, bool IncludeWorldInertia)
+	FTATorqueData(const FVector& TorqueInput, bool IncludeObjectWorldInertia)
 	{
 		Torque = TorqueInput;
-		bIncludeWorldInertia = IncludeWorldInertia;
+		bIncludeObjectWorldInertia = IncludeObjectWorldInertia;
 	}
 	~FTATorqueData() {}
 
 	FVector Torque;
-	bool bIncludeWorldInertia = false;
+	bool bIncludeObjectWorldInertia = false;
 };
 
 struct TAPHYSICSMOVEMENT_API FTAImpulseData

@@ -131,9 +131,9 @@ FBodyInstance* UTAPhysicsMovementComponent_Base::GetBodyInstance() const
 	return BodyInstance;
 }
 
-void UTAPhysicsMovementComponent_Base::AddForce(const FVector& Force, bool bIsAccelerationChange)
+void UTAPhysicsMovementComponent_Base::AddForce(const FVector& Force, bool bIsMassIncluded)
 {
-	FTAForceData ForceData = FTAForceData(Force, bIsAccelerationChange);
+	FTAForceData ForceData = FTAForceData(Force, bIsMassIncluded);
 	DeferredForcesLoader.Add(ForceData);
 }
 
@@ -143,15 +143,15 @@ void UTAPhysicsMovementComponent_Base::AddForceAtPosition(const FVector& Force, 
 	DeferredForcesLoader.Add(ForceAtPositionData);
 }
 
-void UTAPhysicsMovementComponent_Base::AddTorque(const FVector& Torque, bool bIsAccelerationChange)
+void UTAPhysicsMovementComponent_Base::AddTorque(const FVector& Torque, bool bIncludeObjectWorldInertia)
 {
-	FTATorqueData TorqueData = FTATorqueData(Torque, bIsAccelerationChange);
+	FTATorqueData TorqueData = FTATorqueData(Torque, bIncludeObjectWorldInertia);
 	DeferredForcesLoader.Add(TorqueData);
 }
 
-void UTAPhysicsMovementComponent_Base::AddImpulse(const FVector& Impulse, bool bIsVelocityChange)
+void UTAPhysicsMovementComponent_Base::AddImpulse(const FVector& Impulse, bool bIsMassIncluded)
 {
-	FTAImpulseData ImpulseData = FTAImpulseData(Impulse, bIsVelocityChange);
+	FTAImpulseData ImpulseData = FTAImpulseData(Impulse, bIsMassIncluded);
 	DeferredForcesLoader.Add(ImpulseData);
 }
 
