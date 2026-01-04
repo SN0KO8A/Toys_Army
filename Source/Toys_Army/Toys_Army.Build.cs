@@ -7,8 +7,9 @@ public class Toys_Army : ModuleRules
 	public Toys_Army(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+        OptimizeCode = CodeOptimization.Never;
+
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "TAPhysicsMovement", "Chaos" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
